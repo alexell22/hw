@@ -1,0 +1,51 @@
+---
+title: "Untitled"
+author: "A.Elsakova"
+date: "23 09 2021"
+output: html_document
+---
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+
+---
+title: "Markdown"
+author: "A.Elsakova"
+date: "22 09 2021"
+output: html_document
+---
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+Here are the libraries I have used:
+
+```{r}
+library (tidyverse)
+library(readr)
+```
+
+How I uploaded the dataset (can be found in my folder on GitHub)
+
+```{r}
+covid <- read.csv(file="covid.csv", sep=";") #opening the dataset
+print(covid) #checking 
+```
+
+Creating a plot
+
+```{r}
+ggplot(data=covid, aes(x=Date, y=Cases, fill=Increase)) + #bar chart: determination of the axes, adding Increase in cases
+  geom_bar(stat="identity", position=position_identity())+ 
+  theme(axis.text.x = element_text(angle = 90))+ #x-axes vertical
+  ggtitle("Cases of COVID-2019 in Russia")+ #title
+  theme(plot.title = element_text(hjust = 0.5,color="black", size=14, face="bold.italic") #title theme
+  )
+```
+
+
+
